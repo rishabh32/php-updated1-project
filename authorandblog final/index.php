@@ -50,7 +50,12 @@ switch ($action) {
             $published_date=$_POST['published_date'];
             $author=$_POST['author'];
             $email=$_SESSION['email'];
-           $sql="insert into blog values('','$title','$description','$published_date','$author','$email')";
+            $image=$_FILES['image']['name'];
+            $target="images/".basename($image);
+            $temp=$_FILES['image']['tmp_name'];
+            move_uploaded_file($_FILES['image']['tmp_name'], $target);
+           // $img = file_get_contents($image);
+           $sql="insert into blog values('','$title','$description','$published_date','$author','$email','$image')";
            $result=$db_handle->insert($sql);
             if($result==true)
             {
@@ -65,7 +70,7 @@ switch ($action) {
             $sql="delete from blog where blogid='$blogid'";
             $result=$db_handle->insert($sql);
             if($result==true)
-            require_once "web/blogsaved.php";
+            require_once "web/viewblogs.php";
             else
             require_once "web/error.php";
             break;

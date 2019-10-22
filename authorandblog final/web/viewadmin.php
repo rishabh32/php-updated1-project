@@ -10,7 +10,7 @@ table, th, td {
         <th>Published date</th>
         <th>Author</th>
         <th>email</th>
-        
+        <th>Image</th>
     </tr>
     <?php
          $sql="select * from blog";
@@ -34,6 +34,7 @@ table, th, td {
                     <td><?php echo $k['published_date']; ?></td>
                     <td><?php echo $k['author']; ?></td> 
                     <td><?php echo $k['email']; ?></td> 
+                    <td><img src="images/<?php echo $k['image'];?>" height=50 width=50></td>
                     <td><a href="index.php?action=editadmin&blogid=<?php echo $k['blogid']; ?>">Edit</a></td>
                     <td><a href="index.php?action=deleteadmin&blogid=<?php echo $k['blogid']; ?>" onclick="return confirm('Are you sure?')">Delete</a></td>
           </tr>
