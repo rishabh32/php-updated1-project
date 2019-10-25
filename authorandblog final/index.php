@@ -51,9 +51,9 @@ switch ($action) {
             $author=$_POST['author'];
             $email=$_SESSION['email'];
             $image=$_FILES['image']['name'];
-            $target="images/".basename($image);
-            $temp=$_FILES['image']['tmp_name'];
-            move_uploaded_file($_FILES['image']['tmp_name'], $target);
+            $targetpath="images/".basename($image);
+            $temporary=$_FILES['image']['tmp_name'];
+            move_uploaded_file($_FILES['image']['tmp_name'], $targetpath);
            // $img = file_get_contents($image);
            $sql="insert into blog values('','$title','$description','$published_date','$author','$email','$image')";
            $result=$db_handle->insert($sql);
@@ -109,13 +109,17 @@ switch ($action) {
              $published_date=$_POST['published_date'];
              $author=$_POST['author'];
              $blogid=$_SESSION['blogid'];
+             $image=$_FILES['imag']['name'];
+            $targetpath="images/".basename($image);
+            $temporary=$_FILES['imag']['tmp_name'];
+            move_uploaded_file($_FILES['imag']['tmp_name'], $targetpath);
            $sql="Update blog set title='$title',description='$description',published_date='$published_date',
-                      author='$author' where blogid='$blogid'";
+                      author='$author',image='$image' where blogid='$blogid'";
                   $result=$db_handle->insert($sql);
                  if($result==true)
                 {
            
-                        require_once "web/blogsaved.php";
+                        require_once "web/viewblogs.php";
                  }
                  else
                  require_once "web/error.php";
@@ -126,8 +130,12 @@ switch ($action) {
               $published_date=$_POST['published_date'];
               $author=$_POST['author'];
               $blogid=$_SESSION['blogid'];
+              $image=$_FILES['imag']['name'];
+              $targetpath="images/".basename($image);
+              $temporary=$_FILES['imag']['tmp_name'];
+              move_uploaded_file($_FILES['imag']['tmp_name'], $targetpath);
              $sql="Update blog set title='$title',description='$description',published_date='$published_date',
-                   author='$author' where blogid='$blogid'";
+                   author='$author',image='$image' where blogid='$blogid'";
                  $result=$db_handle->insert($sql);
                 if($result==true)
                 {

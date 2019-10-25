@@ -6,30 +6,13 @@ function validation()
 {
 var a = document.form.firstname.value;
 var b = document.form.lastname.value;
-if(a=="")
+var letters = /^[A-Za-z]+$/;
+if(a.match(letters))
 {
-alert("Please Enter Your FirstName");
-document.form.firstname.focus();
-return false;
-}
-if(!isNaN(a))
+//return true;
+if(b.match(letters))
 {
-alert("Please Enter Only Characters");
-document.form.firstname.select();
-return false;
-}
-if(b=="")
-{
-alert("Please Enter Your LastName");
-document.form.lastname.focus();
-return false;
-}
-if(!isNaN(b))
-{
-alert("Please Enter Only Characters");
-document.form.lastname.focus();
-return false;
-}
+//return true;
 var emailID = document.form.email.value;
          atpos = emailID.indexOf("@");
          dotpos = emailID.lastIndexOf(".");
@@ -41,9 +24,23 @@ var emailID = document.form.email.value;
          }
          return( true );
 }
+else
+{
+alert('Name must have alphabet characters only');
+document.form.lastname.focus();
+return false;
+}
+}
+else
+{
+alert('Name must have alphabet characters only');
+document.form.firstname.focus();
+return false;
+}
+}
 </script>
 </head>
-<body>
+<body bgcolor='C3A834'>
 <center>
 <h1>Registration Form</h1><br/><br/>
 <form name="form" action="index.php?action=registerintodatabase" method="POST" onsubmit="return validation()">
@@ -52,7 +49,7 @@ var emailID = document.form.email.value;
 <tr><td>Lastname: </td><td><input type="text" name="lastname" required></td></tr>
 <tr><td>Email:</td><td> <input type="email" name="email" required></td></tr>
 <tr><td>Password:</td><td> <input type="password" name="password" required></td></tr>
-<tr><td>DOB:</td><td> <input type="datetime-local" name="dob" required></td></tr>
+<tr><td>DOB:</td><td> <input type="date" name="dob" required></td></tr>
 <tr><td>Gender:</td><td> <input type="radio" name="gender" value="male" checked> Male<br>
   <input type="radio" name="gender" value="female"> Female<br>
   <input type="radio" name="gender" value="other"> Other<br/><br/>

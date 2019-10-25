@@ -4,7 +4,7 @@ $db_handle = new DBController();
 ?>
 <!DOCTYPE html>
 <html>
-<body>
+<body bgcolor='C3A834'>
 <style>
 table, th, td {
   border: 1px solid black;
@@ -17,7 +17,7 @@ table, th, td {
         <th>Description</th>
         <th>Published date</th>
         <th>Author</th>
-        <th>email</th>
+        <th>Email</th>
         <th>Image</th>
     </tr>
     <?php
@@ -45,7 +45,7 @@ table, th, td {
                     <td><?php echo $k['published_date']; ?></td>
                     <td><?php echo $k['author']; ?></td> 
                     <td><?php echo $k['email']; ?></td> 
-                    <td><img src="images/<?php echo $k['image'];?>" height=50 width=50></td>
+                    <td><img src="images/<?php echo $k['image'];?>" height=80 width=80></td>
                     <td><a href="index.php?action=edit&blogid=<?php echo $k['blogid']; ?>">Edit</a></td>
                     <td><a href="index.php?action=delete&blogid=<?php echo $k['blogid']; ?>" onclick="return confirm('Are you sure?')">Delete</a></td>
           </tr>

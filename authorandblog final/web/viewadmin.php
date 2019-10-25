@@ -1,15 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
 <style>
 table, th, td {
   border: 1px solid black;
 }
 </style>
+</head>
+<body bgcolor='C3A834'>
 <table style="width:30%">
     <tr>
         <th>Title</th>
         <th>Description</th>
         <th>Published date</th>
         <th>Author</th>
-        <th>email</th>
+        <th>Email</th>
         <th>Image</th>
     </tr>
     <?php
@@ -34,7 +39,7 @@ table, th, td {
                     <td><?php echo $k['published_date']; ?></td>
                     <td><?php echo $k['author']; ?></td> 
                     <td><?php echo $k['email']; ?></td> 
-                    <td><img src="images/<?php echo $k['image'];?>" height=50 width=50></td>
+                    <td><img src="images/<?php echo $k['image'];?>" height=80 width=80></td>
                     <td><a href="index.php?action=editadmin&blogid=<?php echo $k['blogid']; ?>">Edit</a></td>
                     <td><a href="index.php?action=deleteadmin&blogid=<?php echo $k['blogid']; ?>" onclick="return confirm('Are you sure?')">Delete</a></td>
           </tr>
@@ -53,3 +58,6 @@ table, th, td {
                    ?>
                    <br/><br/>
 <a href="index.php?action=logout">Logout</a>
+</body>
+</body>
+</html>
