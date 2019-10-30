@@ -22,12 +22,26 @@ class DBController {
         return false;
     }
 
+    public function delete($sql) {
+        if(mysqli_query($this->conn,$sql))
+        return true;
+        else
+        return false;
+    }
+
+
+
     public function check($sql) {
         $result=mysqli_query($this->conn,$sql);
         if(mysqli_num_rows($result)>0)
         return true;
         else
         return false;
+    }
+
+    public function getid($sql) {
+        $result=mysqli_query($this->conn,$sql);
+        return $result;
     }
 
     public function pagen($sql) {

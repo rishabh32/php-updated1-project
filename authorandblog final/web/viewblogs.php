@@ -1,10 +1,9 @@
 <?php
-require_once ("class/DBController.php");
-$db_handle = new DBController();
+require_once ("web/pagination.php");
 ?>
 <!DOCTYPE html>
 <html>
-<body>
+<body bgcolor='C3A834'>
 <style>
 table, th, td {
   border: 1px solid black;
@@ -17,25 +16,10 @@ table, th, td {
         <th>Description</th>
         <th>Published date</th>
         <th>Author</th>
-        <th>email</th>
-      
+        <th>Email</th>
+        <th>Image</th>
     </tr>
     <?php
-    $results_per_page=2;
-     $sql="select * from blog where email='$_SESSION[email]'";
-    // echo $_SESSION[email];
-     $result=$db_handle->pagen($sql);
-     $number_of_results=mysqli_num_rows($result);
-     $number_of_pages=ceil($number_of_results/$results_per_page);
-     if(!isset($_GET['page']))
-     $page=1;
-     else
-     $page=$_GET['page'];
-     $this_page_first_result=($page-1)*$results_per_page;
-     $sql="select * from blog where email='$_SESSION[email]' LIMIT ". $this_page_first_result. "," . $results_per_page;
-     $result=$db_handle->pagen($sql); 
-    // echo $res[0]['title'];
-   //  print $res[0]['title'];
                     if (! empty($result)) {
                         foreach ($result as $k) {
                             ?>
@@ -45,6 +29,7 @@ table, th, td {
                     <td><?php echo $k['published_date']; ?></td>
                     <td><?php echo $k['author']; ?></td> 
                     <td><?php echo $k['email']; ?></td> 
+                    <td><img src="images/<?php echo $k['image'];?>" height=80 width=80></td>
                     <td><a href="index.php?action=edit&blogid=<?php echo $k['blogid']; ?>">Edit</a></td>
                     <td><a href="index.php?action=delete&blogid=<?php echo $k['blogid']; ?>" onclick="return confirm('Are you sure?')">Delete</a></td>
           </tr>
@@ -54,11 +39,9 @@ table, th, td {
                  
                     else
                    echo "There is no record to fetch";
-
-                  
                     ?>
 </table><br/><br/>
-                    <?php
+                   <?php
                 for($page=1;$page<=$number_of_pages;$page++)
                    {
                        echo '<a href="index.php?action=page&page='.$page.'">'.$page.'</a>';

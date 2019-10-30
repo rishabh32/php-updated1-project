@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<body>
+<body bgcolor='C3A834'>
 <center>
 <h1>Admin Login</h1>
 <form action="index.php?action=checkadmin" method="POST">

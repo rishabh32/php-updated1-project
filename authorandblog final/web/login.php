@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<body>
+<body bgcolor='C3A834'>
 <center>
 <h1>Author Login</h1>
 <form action="index.php?action=checkauthor" method="POST">
